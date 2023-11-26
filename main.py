@@ -29,5 +29,10 @@ def listen():
     except:
         speak("I did not get that")
 
+def processSpeech(text):
+    if "note" in text:
+        speak("Could you please buy me a note pad?")
 
-speak("Hi, I'm sally")
+
+
+speak("Hi, I'm sallie")
