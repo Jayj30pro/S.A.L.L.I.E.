@@ -13,7 +13,9 @@ def speak(phrase):
     speech.say(phrase)
     speech.runAndWait()
 
-def listen():
+
+
+def listen(currentClient):
     recognizer = speech_recognition.Recognizer()
     try:
         with speech_recognition.Microphone() as mic:
@@ -24,18 +26,32 @@ def listen():
             text = recognizer.recognize_google(audio)
             text = text.lower()
 
+            if currentClient == "List":
+                writeToList(text)
+
             print(f"You said {text}") #test line
             #processSpeech(text)
     except:
         speak("I did not get that")
 
-def processSpeech(text):
-    if "note" in text:
+
+
+def processSpeech(spokenWords):
+    if "note" in spokenWords:
         speak("Could you please buy me a note pad?")
+
+
+    elif "list" in spokenWords:
+        makeList()
+
 
 def makeList():
     speak("What is the first item on the list?")
-    listen()
+    listen("List")
+
+
+def writeToList(text):
+    print("it has been noted")
 
 
 speak("Hi, I'm sallie")
