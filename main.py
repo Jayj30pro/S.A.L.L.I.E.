@@ -33,6 +33,9 @@ def processSpeech(text):
     if "note" in text:
         speak("Could you please buy me a note pad?")
 
+def makeList():
+    speak("What is the first item on the list?")
+    listen()
 
 
 speak("Hi, I'm sallie")
