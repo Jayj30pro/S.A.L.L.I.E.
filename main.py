@@ -9,13 +9,13 @@ speechSpeed = 170
 def speak(phrase):
     speech = pyttsx3.init()
     speech.setProperty('rate', speechSpeed)
-    speech.setProperty('voice', 'english+f4')
+    speech.setProperty('voice', 'english+f2')
     speech.say(phrase)
     speech.runAndWait()
 
 
 
-def listen(currentClient):
+def listen(function):
     recognizer = speech_recognition.Recognizer()
     try:
         with speech_recognition.Microphone() as mic:
@@ -26,24 +26,36 @@ def listen(currentClient):
             text = recognizer.recognize_google(audio)
             text = text.lower()
 
-            if currentClient == "List":
-                writeToList(text)
-
             print(f"You said {text}") #test line
-            #processSpeech(text)
+            if function == "Note":
+                note(text)
+            else:
+                processSpeech(text)
     except:
-        speak("I did not get that")
+        speak("I'm sorry, but I did not get that")
 
 
 
 def processSpeech(spokenWords):
     if "note" in spokenWords:
-        speak("Could you please buy me a note pad?")
+        listen("Note")
+        speak("I'm getting my notepad ready")
 
 
     elif "list" in spokenWords:
         makeList()
 
+    # elif "" in spokenWords:
+    #     #next function()
+    # elif "" in spokenWords:
+    #     #next function()
+    # elif "" in spokenWords:
+    #     #next function()
+    # elif "" in spokenWords:
+    #     #next function()
+    else:
+        speak("I got nothing")
+        print("I got nothing")
 
 def makeList():
     speak("What is the first item on the list?")
@@ -51,7 +63,17 @@ def makeList():
 
 
 def writeToList(text):
-    print("it has been noted")
+    print("it has been noted ", text, " was added")
 
+def note(text):
+    notepad = open("notepad.txt","a")
+    notepad.write(text)
+    notepad.close()
+
+def getNotes():
+    notes = open("notepad.txt, rt")
+    speak("Here are the notes")
+    speak(notes.read())
 
 speak("Hi, I'm sallie")
+listen("start")
