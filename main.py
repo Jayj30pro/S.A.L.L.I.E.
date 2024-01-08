@@ -1,8 +1,8 @@
-from tkinter import *
-import time
+#from tkinter import *
+#import time
 import pyttsx3
 import speech_recognition
-from PIL import ImageTk, Image
+#from PIL import ImageTk, Image
 
 speechSpeed = 170
 
@@ -20,26 +20,37 @@ def listen(function):
     try:
         with speech_recognition.Microphone() as mic:
             recognizer.adjust_for_ambient_noise(mic, duration=0.2)
-            speak("Go ahead I'm listening")
             print('ready')
+            speak("Go ahead I'm listening")
             audio = recognizer.listen(mic)
             text = recognizer.recognize_google(audio)
             text = text.lower()
 
             print(f"You said {text}") #test line
-            if function == "Note":
+
+            if function == "start":
+                processSpeech(text)
+
+            elif function == "Note":
                 note(text)
+
+            
             else:
                 processSpeech(text)
     except:
         speak("I'm sorry, but I did not get that")
+        #recognizer = speech_recognition.Recognizer()
+        #listen("start")
+        #listen()
 
+        
 
 
 def processSpeech(spokenWords):
     if "note" in spokenWords:
-        listen("Note")
         speak("I'm getting my notepad ready")
+        listen("Note")
+        
 
 
     elif "list" in spokenWords:
@@ -77,3 +88,4 @@ def getNotes():
 
 speak("Hi, I'm sallie")
 listen("start")
+#listen()
