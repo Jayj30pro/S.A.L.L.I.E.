@@ -80,7 +80,7 @@ def writeToList(text):
 
 def note(text):
     notepad = open("notepad.txt","a")
-    notepad.write(text)
+    notepad.write(text + "\n")
     notepad.close()
 
 def getNotes():
