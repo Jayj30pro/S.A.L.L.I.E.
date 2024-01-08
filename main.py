@@ -51,7 +51,9 @@ def processSpeech(spokenWords):
         speak("I'm getting my notepad ready")
         listen("Note")
         
-
+    elif "what" and "got" in spokenWords:
+        print("notes")
+        getNotes()
 
     elif "list" in spokenWords:
         makeList()
@@ -82,10 +84,13 @@ def note(text):
     notepad.close()
 
 def getNotes():
-    notes = open("notepad.txt, rt")
+    print('here are the notes')
+    notes = open("notepad.txt", "rt")
     speak("Here are the notes")
     speak(notes.read())
 
 speak("Hi, I'm sallie")
+#getNotes()
 listen("start")
+
 #listen()
