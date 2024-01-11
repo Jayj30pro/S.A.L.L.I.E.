@@ -39,9 +39,7 @@ def listen(function):
                 processSpeech(text)
     except:
         speak("I'm sorry, but I did not get that")
-        #recognizer = speech_recognition.Recognizer()
-        #listen("start")
-        #listen()
+
 
         
 
@@ -88,6 +86,7 @@ def getNotes():
     notes = open("notepad.txt", "rt")
     speak("Here are the notes")
     speak(notes.read())
+    notes.close()
 
 speak("Hi, I'm sallie")
 #getNotes()
