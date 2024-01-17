@@ -33,6 +33,9 @@ def listen(function):
 
             elif function == "Note":
                 note(text)
+            
+            elif function == "List":
+                writeToList(text)
 
             
             else:
@@ -48,16 +51,17 @@ def processSpeech(spokenWords):
     if "note" in spokenWords:
         speak("I'm getting my notepad ready")
         listen("Note")
-        
-    elif "what" and "got" in spokenWords:
-        print("notes")
-        getNotes()
 
     elif "list" in spokenWords:
-        makeList()
+        speak("What is the first item on the list?")
+        listen("List")
 
-    # elif "" in spokenWords:
-    #     #next function()
+    elif "what" and "got" in spokenWords:
+        getNotes()
+
+    elif "what" and "agenda" in spokenWords:
+        readList()
+
     # elif "" in spokenWords:
     #     #next function()
     # elif "" in spokenWords:
@@ -68,13 +72,23 @@ def processSpeech(spokenWords):
         speak("I got nothing")
         print("I got nothing")
 
-def makeList():
-    speak("What is the first item on the list?")
-    listen("List")
 
+    
+
+def readList():
+    print('here is what is on the agenda')
+    agenda = open("theList.txt", "rt")
+    speak("Here is what is on the agenda")
+    speak(agenda.read())
+    agenda.close()
 
 def writeToList(text):
-    print("it has been noted ", text, " was added")
+    theList = open("theList.txt","a")
+    theList.write(text + "\n")
+    theList.close()
+    speak("Got it.", text, ", was added to the list")
+
+
 
 def note(text):
     notepad = open("notepad.txt","a")
@@ -88,7 +102,10 @@ def getNotes():
     speak(notes.read())
     notes.close()
 
-speak("Hi, I'm sallie")
+def intro():
+    speak("Hi, I'm sallie. I am your personal digital assistant, You can tell me what you want me to do or say, nevermind, to use the buttons")
+
+intro()
 #getNotes()
 listen("start")
 
