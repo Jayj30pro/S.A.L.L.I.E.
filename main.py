@@ -31,10 +31,10 @@ def listen(function):
             if function == "start":
                 processSpeech(text)
 
-            elif function == "Note":
+            if function == "Note":
                 note(text)
             
-            elif function == "List":
+            if function == "List":
                 writeToList(text)
 
             
@@ -52,14 +52,14 @@ def processSpeech(spokenWords):
         speak("I'm getting my notepad ready")
         listen("Note")
 
-    elif "list" in spokenWords:
+    if "list" in spokenWords:
         speak("What is the first item on the list?")
         listen("List")
 
-    elif "what" and "got" in spokenWords:
+    if "what" and "got" in spokenWords:
         getNotes()
 
-    elif "what" and "agenda" in spokenWords:
+    if "what" and "agenda" in spokenWords:
         readList()
 
     # elif "" in spokenWords:
@@ -68,6 +68,7 @@ def processSpeech(spokenWords):
     #     #next function()
     # elif "" in spokenWords:
     #     #next function()
+
     else:
         speak("I got nothing")
         print("I got nothing")
