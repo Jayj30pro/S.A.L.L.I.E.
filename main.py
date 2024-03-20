@@ -26,7 +26,7 @@ def listen(function):
             text = recognizer.recognize_google(audio)
             text = text.lower()
 
-            print(f"You said {text}") #test line
+            print(f"You said {text}") # test line
 
             if function == "start":
                 processSpeech(text)
@@ -37,11 +37,10 @@ def listen(function):
             if function == "List":
                 writeToList(text)
 
-            
-            else:
-                processSpeech(text)
-    except:
+    except Exception as e:
+        print("An error occurred:", e)
         speak("I'm sorry, but I did not get that")
+
 
 
         
@@ -87,7 +86,7 @@ def writeToList(text):
     theList = open("theList.txt","a")
     theList.write(text + "\n")
     theList.close()
-    speak("Got it.", text, ", was added to the list")
+    speak("Got it. " + text + " was added to the list")
 
 
 

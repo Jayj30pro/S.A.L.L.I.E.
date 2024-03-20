@@ -1,10 +1,10 @@
 
-S
-A
-L
-L
-I
-E
+Solution to
+All
+Lacks of
+Logic
+In the 
+Environment
 
 
 This is an open source project to create a digital assistant.
