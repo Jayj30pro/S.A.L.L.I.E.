@@ -103,7 +103,7 @@ def getNotes():
     notes.close()
 
 def intro():
-    speak("Hi, I'm sallie. I am your personal digital assistant, You can tell me what you want me to do or say, nevermind, to use the buttons")
+    speak("Hi, I'm sallie. I am your personal digital assistant, You can tell me what you want me to do or say, never mind, to use the buttons")
 
 intro()
 #getNotes()

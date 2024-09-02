@@ -1,8 +1,8 @@
 
 Solution to
 All
-Lacks of
-Logic
+Light
+Loads
 In the 
 Environment
 
